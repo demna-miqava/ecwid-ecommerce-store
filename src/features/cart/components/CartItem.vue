@@ -52,16 +52,16 @@ const { handleQuantityChange, handleRemove } = useCart();
         <i class="pi pi-trash text-[20px]"></i>
       </IconButton>
 
-      <div class="flex items-center bg-gray-800 rounded-full h-10 px-2">
+      <div class="flex items-center bg-gray-800 rounded-full h-8 sm:h-10 px-1 sm:px-2">
         <IconButton
           @click="handleQuantityChange(item.product.id, item.quantity - 1)"
           size="sm"
           ariaLabel="Decrease quantity"
           class="text-white hover:bg-gray-700"
         >
-          <i class="pi pi-minus text-[12px]"></i>
+          <i class="pi pi-minus text-[10px] sm:text-[12px]"></i>
         </IconButton>
-        <span class="w-12 text-center font-semibold text-white text-lg"
+        <span class="w-8 sm:w-12 text-center font-semibold text-white text-base sm:text-lg"
           >{{ item.quantity }}
         </span>
         <IconButton
@@ -70,7 +70,7 @@ const { handleQuantityChange, handleRemove } = useCart();
           ariaLabel="Increase quantity"
           class="text-white hover:bg-gray-700"
         >
-          <i class="pi pi-plus text-[12px]"></i>
+          <i class="pi pi-plus text-[10px] sm:text-[12px]"></i>
         </IconButton>
       </div>
     </div>
