@@ -38,7 +38,7 @@ const handleCloseModal = () => {
 
     <div v-if="items.length > 0" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <CartSection />
-      <ShippingSection @place-order="handlePlaceOrder" />
+      <ShippingSection @placeOrder="handlePlaceOrder" />
     </div>
 
     <Transition name="modal">
