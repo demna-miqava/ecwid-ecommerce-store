@@ -17,7 +17,7 @@ const {
 } = useGetCategoryProducts(props.categoryId);
 
 const title = computed(() => {
-  return props.categoryName ? `${props.categoryName} Products` : "Products";
+  return `${props.categoryName ?? ""} Products`;
 });
 </script>
 
