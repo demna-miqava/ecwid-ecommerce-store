@@ -8,7 +8,7 @@ const { data, isLoading, isError } = useGetProducts();
 </script>
 
 <template>
-  <section>
+  <section class="mt-12">
     <h2 class="text-center text-3xl text-gray-700 font-semibold mb-12">
       Featured Products
     </h2>
