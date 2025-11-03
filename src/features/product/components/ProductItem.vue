@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import type { Product } from "@/types/product";
+import { useCart } from "@/features/cart/composables/useCart";
 
 interface Props {
   product: Product;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const { handleAddToCart } = useCart();
+
+const handleBuyNow = (event: Event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  handleAddToCart(props.product);
+};
 </script>
 
 <template>
@@ -28,8 +37,8 @@ defineProps<Props>();
       <div class="flex justify-between items-center mt-auto">
         <p class="font-bold text-lg">${{ product.price.toFixed(2) }}</p>
         <button
-          @click.prevent="$event.stopPropagation()"
-          class="whitespace-nowrap bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+          @click="handleBuyNow"
+          class="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 cursor-pointer"
         >
           Buy Now
         </button>
