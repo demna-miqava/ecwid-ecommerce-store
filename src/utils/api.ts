@@ -1,4 +1,4 @@
-import { config } from "@/config";
+import { config } from "@/consts/apiConfig";
 
 export const buildApiUrl = (
   endpoint: string,
