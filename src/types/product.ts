@@ -1,3 +1,20 @@
+export interface GalleryImage {
+  id: number;
+  hdThumbnailUrl: string;
+  thumbnailUrl: string;
+}
+
+export interface ProductOption {
+  type: string;
+  name: string;
+  choices: Array<{
+    text: string;
+    priceModifier: number;
+    priceModifierType: string;
+  }>;
+  defaultChoice: number;
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -8,8 +25,9 @@ export interface Product {
   categoryIds?: number[];
   thumbnailUrl: string;
   hdThumbnailUrl: string;
-  smallThumbnailUrl: string;
   imageUrl: string;
   inStock?: boolean;
   created?: string;
+  options?: ProductOption[];
+  galleryImages?: GalleryImage[];
 }

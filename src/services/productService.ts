@@ -13,6 +13,10 @@ export async function getProducts(): Promise<ProductsResponse> {
   return apiFetch<ProductsResponse>("/products");
 }
 
+export async function getProductById(productId: number): Promise<Product> {
+  return apiFetch<Product>(`/products/${productId}`);
+}
+
 export async function getProductsByCategory(
   category: number
 ): Promise<ProductsResponse> {
