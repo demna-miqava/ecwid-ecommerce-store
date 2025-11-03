@@ -14,6 +14,7 @@ const { totalItems } = useCart();
         <router-link to="/cart" class="relative">
           <i class="pi pi-shopping-bag text-[24px] text-gray-500"></i>
           <span
+            v-if="totalItems > 0"
             class="absolute -top-2 -right-2 bg-black text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
           >
             {{ totalItems }}
