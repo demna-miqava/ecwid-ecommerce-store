@@ -12,3 +12,9 @@ interface ProductsResponse {
 export async function getProducts(): Promise<ProductsResponse> {
   return apiFetch<ProductsResponse>("/products");
 }
+
+export async function getProductsByCategory(
+  category: number
+): Promise<ProductsResponse> {
+  return apiFetch<ProductsResponse>(`/products?category=${category}`);
+}

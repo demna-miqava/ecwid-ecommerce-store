@@ -4,18 +4,19 @@ import FetchWrapper from "@/components/common/FetchWrapper.vue";
 import { useGetCategories } from "../composables/useGetCategories";
 import CategoryItem from "./CategoryItem.vue";
 import CategoryItemSkeleton from "./CategoryItemSkeleton.vue";
+import { nestCategories } from "@/utils/categoryUtils";
 
 const { data: categoriesData, isLoading, isError } = useGetCategories();
 
-const categories = computed(() => {
+const nestedCategories = computed(() => {
   if (!categoriesData.value) return [];
-  return categoriesData.value.items;
+  return nestCategories(categoriesData.value.items);
 });
 </script>
 
 <template>
   <FetchWrapper
-    :data="categories"
+    :data="nestedCategories"
     :is-loading="isLoading"
     :is-error="isError"
     empty-text="No categories found"
