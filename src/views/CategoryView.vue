@@ -66,6 +66,9 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => {
 
     <SubcategoriesSection :subcategories="subcategories" />
 
-    <CategoryProductsSection :category-id="currentCategoryId" />
+    <CategoryProductsSection
+      :category-id="currentCategoryId"
+      :category-name="currentCategory?.name"
+    />
   </div>
 </template>
