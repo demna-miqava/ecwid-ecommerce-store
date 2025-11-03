@@ -14,7 +14,7 @@ const emit = defineEmits<{
 
 <template>
   <div class="space-y-4">
-    <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+    <div class="bg-gray-100 rounded-lg overflow-hidden">
       <img
         v-if="selectedImage"
         :src="selectedImage"
@@ -28,7 +28,7 @@ const emit = defineEmits<{
         v-for="(image, index) in allImages"
         :key="index"
         @click="emit('selectImage', index)"
-        class="aspect-square bg-gray-100 rounded-lg overflow-hidden border-2 transition-colors"
+        class="bg-gray-100 rounded-lg overflow-hidden border-2 transition-colors"
         :class="
           selectedIndex === index
             ? 'border-black'
