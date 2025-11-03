@@ -22,7 +22,7 @@ const handleBuyNow = (event: Event) => {
     :to="{ name: 'product-details', params: { id: product.id } }"
     class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
   >
-    <div class="aspect-square bg-gray-200 overflow-hidden">
+    <div class="bg-gray-200 overflow-hidden">
       <img
         v-if="product.hdThumbnailUrl"
         :src="product.hdThumbnailUrl"
