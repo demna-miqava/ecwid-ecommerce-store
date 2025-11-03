@@ -4,7 +4,7 @@ interface Props {
   ariaLabel: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: "md",
 });
 
