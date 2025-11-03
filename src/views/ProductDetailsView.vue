@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { useCartStore } from "@/stores/cartStore";
 import FetchWrapper from "@/components/common/FetchWrapper.vue";
 import ProductGallery from "@/features/product/components/ProductGallery.vue";
 import ProductSizes from "@/features/product/components/ProductSizes.vue";
 import ProductDetailsSkeleton from "@/features/product/components/ProductDetailsSkeleton.vue";
 import { useGetProductById } from "@/features/product/composables/useGetProductById";
 import { useSelectedImage } from "@/features/product/composables/useSelectedImage";
+import { useCart } from "@/features/cart/composables/useCart";
 
 const route = useRoute();
-const cartStore = useCartStore();
 
 const productId = computed(() => Number(route.params.id));
 
 const { data: product, isLoading, isError } = useGetProductById(productId);
+const { handleAddToCart } = useCart();
 
 const { selectedImage, allImages, selectedImageIndex, selectImage } =
   useSelectedImage(product);
@@ -25,12 +25,6 @@ const sizeOptions = computed(() => {
     (opt) => opt.type === "SIZE" || opt.name.toLowerCase().includes("size")
   );
 });
-
-const handleAddToCart = () => {
-  if (product.value) {
-    cartStore.addToCart(product.value);
-  }
-};
 </script>
 
 <template>
@@ -78,7 +72,7 @@ const handleAddToCart = () => {
               />
 
               <button
-                @click="handleAddToCart"
+                @click="() => handleAddToCart(data)"
                 class="bg-black text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors duration-200"
               >
                 Add to Cart
