@@ -18,7 +18,6 @@ const categories = computed(() => {
     :data="categories"
     :is-loading="isLoading"
     :is-error="isError"
-    loading-text="Loading categories"
     empty-text="No categories found"
     error-text="Failed to load categories"
   >

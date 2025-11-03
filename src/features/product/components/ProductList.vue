@@ -17,7 +17,6 @@ const { data, isLoading, isError } = useGetProducts();
       :data="data?.items"
       :isLoading="isLoading"
       :isError="isError"
-      loadingText="Loading products..."
       emptyText="No products available"
       errorText="Failed to load products. Please try again."
     >
