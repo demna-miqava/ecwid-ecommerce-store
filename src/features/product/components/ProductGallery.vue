@@ -28,7 +28,7 @@ const emit = defineEmits<{
         v-for="(image, index) in allImages"
         :key="index"
         @click="emit('selectImage', index)"
-        class="bg-gray-100 rounded-lg overflow-hidden border-2 transition-colors"
+        class="bg-gray-100 rounded-lg overflow-hidden border-2 transition-colors cursor-pointer"
         :class="
           selectedIndex === index
             ? 'border-primary'
