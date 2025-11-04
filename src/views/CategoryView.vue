@@ -15,14 +15,12 @@ const { breadcrumbItems } = useCategoryBreadcrumbs(
 </script>
 
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <Breadcrumb :items="breadcrumbItems" />
+  <Breadcrumb :items="breadcrumbItems" />
 
-    <SubcategoriesSection :subcategories="subcategories" />
+  <SubcategoriesSection :subcategories="subcategories" />
 
-    <CategoryProductsSection
-      :category-id="currentCategoryId"
-      :category-name="currentCategory?.name"
-    />
-  </div>
+  <CategoryProductsSection
+    :category-id="currentCategoryId"
+    :category-name="currentCategory?.name"
+  />
 </template>

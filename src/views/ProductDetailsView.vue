@@ -28,7 +28,7 @@ const sizeOptions = computed(() => {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto py-8">
     <FetchWrapper
       :data="product"
       :is-loading="isLoading"
@@ -42,7 +42,7 @@ const sizeOptions = computed(() => {
       </template>
 
       <template #default="{ data }">
-        <div v-if="data" class="max-w-6xl mx-auto">
+        <div v-if="data" class="max-w-7xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProductGallery
               :selected-image="selectedImage"
