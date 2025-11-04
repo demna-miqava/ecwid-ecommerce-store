@@ -1,42 +1,59 @@
-# lightspeed-assignment
+# Lightspeed Assignment
 
-This template should help get you started developing with Vue 3 in Vite.
+E-commerce storefront application built with Vue 3, TypeScript, and Ecwid API.
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Vue 3** with Composition API
+- **TypeScript** for type safety
+- **Vite** for fast development and building
+- **Tailwind CSS** for styling
+- **Pinia** for state management
+- **Vue Router** for routing
+- **TanStack Query** for data fetching and caching
+- **Vitest** for testing
 
-## Recommended Browser Setup
+## Prerequisites
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Node.js `^20.19.0` or `>=22.12.0`
+- npm or yarn
+- Ecwid store credentials
 
-## Type Support for `.vue` Imports in TS
+## Environment Setup
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+1. Copy the example environment file:
 
-## Customize configuration
+2. Configure your Ecwid credentials in `.env`:
+   ```
+   VITE_ECWID_STORE_ID=your_store_id
+   VITE_ECWID_API_TOKEN=your_api_token
+   VITE_ECWID_API_URL=your_api_url
+   ```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Installation
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Development
+
+Start the development server:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Testing
+
+Run tests:
 
 ```sh
-npm run build
+npm run test
+```
+
+Run tests with UI:
+
+```sh
+npm run test:ui
 ```
