@@ -44,6 +44,8 @@ const handleCloseModal = () => {
     <Transition name="modal">
       <div
         v-if="showCongrats"
+        role="dialog"
+        aria-modal="true"
         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
         @click="handleCloseModal"
       >
@@ -54,7 +56,7 @@ const handleCloseModal = () => {
           <div class="mb-6 animate-bounce">
             <i class="pi pi-sparkles text-4xl text-purple-400"></i>
           </div>
-          <h3 class="text-3xl font-bold text-primary mb-3">Congratulations!</h3>
+          <h2 class="text-3xl font-bold text-primary mb-3">Congratulations!</h2>
           <p class="text-secondary text-lg mb-8">
             Thank you for your purchase! Your order has been placed
             successfully.

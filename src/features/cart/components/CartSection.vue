@@ -6,7 +6,7 @@ const { items } = useCart();
 </script>
 
 <template>
-  <div class="lg:col-span-2 space-y-4">
+  <section class="lg:col-span-2 space-y-4">
     <CartItem v-for="item in items" :key="item.id" :item="item" />
-  </div>
+  </section>
 </template>
