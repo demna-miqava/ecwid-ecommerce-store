@@ -11,9 +11,7 @@ defineProps<Props>();
 
 <template>
   <section v-if="subcategories.length > 0" class="mb-12">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-    >
+    <div class="grid-responsive">
       <CategoryItem
         v-for="subcategory in subcategories"
         :key="subcategory.id"

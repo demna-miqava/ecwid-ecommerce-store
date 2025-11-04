@@ -34,17 +34,13 @@ withDefaults(defineProps<Props>(), {
       :errorText="errorText"
     >
       <template #loading>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
+        <div class="grid-responsive">
           <ProductItemSkeleton v-for="i in 8" :key="i" />
         </div>
       </template>
 
       <template #default="{ data }">
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
+        <div class="grid-responsive">
           <ProductItem
             v-for="product in data"
             :key="product.id"

@@ -23,17 +23,13 @@ const nestedCategories = computed(() => {
     error-text="Failed to load categories"
   >
     <template #loading>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-      >
+      <div class="grid-responsive">
         <CategoryItemSkeleton v-for="i in 4" :key="i" />
       </div>
     </template>
 
     <template #default="{ data }">
-      <section
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-      >
+      <section class="grid-responsive">
         <CategoryItem
           v-for="category in data"
           :key="category.id"
