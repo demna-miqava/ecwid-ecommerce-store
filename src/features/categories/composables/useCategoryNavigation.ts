@@ -7,8 +7,8 @@ export function useCategoryNavigation() {
   const { data: categoriesData } = useGetCategories();
 
   const currentCategoryId = computed(() => {
-    const subCategoryId = route.params.subCategoryId;
-    return subCategoryId ? Number(subCategoryId) : Number(route.params.id);
+    const { id, subCategoryId } = route.params;
+    return subCategoryId ? Number(subCategoryId) : Number(id);
   });
 
   const currentCategory = computed(() =>
@@ -17,7 +17,6 @@ export function useCategoryNavigation() {
     )
   );
 
-  // Find parent category if viewing a subcategory
   const parentCategory = computed(() => {
     if (!currentCategory.value?.parentId) return null;
     return categoriesData.value?.items?.find(
@@ -25,7 +24,6 @@ export function useCategoryNavigation() {
     );
   });
 
-  // Get subcategories of the current category
   const subcategories = computed(
     () =>
       categoriesData.value?.items.filter(

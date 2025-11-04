@@ -22,13 +22,11 @@ export function nestCategories(categories: Category[]): NestedCategory[] {
     const nestedCategory = categoryMap.get(category.id)!;
 
     if (category.parentId) {
-      // This is a subcategory
       const parent = categoryMap.get(category.parentId);
       if (parent) {
         parent.subcategories.push(nestedCategory);
       }
     } else {
-      // This is a root category
       rootCategories.push(nestedCategory);
     }
   });

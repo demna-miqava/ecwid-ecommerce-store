@@ -9,10 +9,8 @@ export function useSelectedImage(product: Ref<Product | undefined>) {
 
     const images: string[] = [];
 
-    // Add main product image first
     images.push(product.value.originalImageUrl);
 
-    // Add gallery images
     if (product.value.galleryImages) {
       product.value.galleryImages.forEach((img) => {
         images.push(img.originalImageUrl);

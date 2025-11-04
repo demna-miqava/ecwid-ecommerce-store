@@ -24,12 +24,10 @@ export const useCartStore = defineStore("cart", () => {
     selectedOptionValue?: string,
     priceModifier?: number
   ) {
-    // Generate unique ID for this cart item
     const itemId = selectedOptionValue
       ? `${product.id}-${selectedOptionValue}`
       : `${product.id}`;
 
-    // Check if this exact item (product + option) already exists
     const existingItem = items.value.find((item) => item.id === itemId);
 
     if (existingItem) {

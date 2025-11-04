@@ -30,6 +30,7 @@ export async function apiFetch<T>(
   const response = await fetch(url, {
     ...options?.init,
     headers: {
+      ...options?.init?.headers,
       Authorization: `Bearer ${config.ecwid.apiToken}`,
       "Content-Type": "application/json",
     },
