@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import type { CartItem } from "@/types/cart";
+import { getCartItemPrice } from "@/utils/cartUtils";
 import { useCart } from "../composables/useCart";
 import IconButton from "@/components/common/IconButton.vue";
+import { computed } from "vue";
 
 interface Props {
   item: CartItem;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 const { handleQuantityChange, handleRemove } = useCart();
+
+const itemPrice = computed(() => getCartItemPrice(props.item));
 </script>
 
 <template>
@@ -20,9 +24,9 @@ const { handleQuantityChange, handleRemove } = useCart();
         class="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-xl overflow-hidden border border-gray-200"
       >
         <img
-          v-if="item.product.originalImageUrl"
-          :src="item.product.originalImageUrl"
-          :alt="item.product.name"
+          v-if="item.imageUrl"
+          :src="item.imageUrl"
+          :alt="item.title"
           class="w-full h-full object-cover"
         />
       </div>
@@ -32,19 +36,25 @@ const { handleQuantityChange, handleRemove } = useCart();
       <h3
         class="font-semibold text-sm sm:text-base text-gray-900 mb-1 sm:mb-2 line-clamp-2"
       >
-        {{ item.product.name }}
+        {{ item.title }}
       </h3>
+      <p
+        v-if="item.selectedOption"
+        class="text-xs sm:text-sm text-gray-600 mb-1"
+      >
+        {{ item.selectedOption.name }}: {{ item.selectedOption.value }}
+      </p>
       <p class="font-bold text-base sm:text-lg text-gray-900">
-        ${{ item.product.price.toFixed(2) }}
+        ${{ itemPrice.toFixed(2) }}
       </p>
     </div>
 
-    <!-- Actions: Delete + Quantity (column on small, row on large) -->
+    <!-- Actions: Delete + Quantity -->
     <div
       class="ml-auto flex flex-col sm:flex-row items-end sm:items-center gap-3 sm:gap-4 shrink-0"
     >
       <IconButton
-        @click="handleRemove(item.product.id)"
+        @click="handleRemove(item.id)"
         size="sm"
         ariaLabel="Remove item from cart"
         class="text-gray-400 hover:text-gray-600 hover:bg-gray-200"
@@ -56,7 +66,7 @@ const { handleQuantityChange, handleRemove } = useCart();
         class="flex items-center bg-gray-800 rounded-full h-8 sm:h-10 px-1 sm:px-2"
       >
         <IconButton
-          @click="handleQuantityChange(item.product.id, item.quantity - 1)"
+          @click="handleQuantityChange(item.id, item.quantity - 1)"
           size="sm"
           ariaLabel="Decrease quantity"
           class="text-white hover:bg-gray-700"
@@ -68,7 +78,7 @@ const { handleQuantityChange, handleRemove } = useCart();
           >{{ item.quantity }}
         </span>
         <IconButton
-          @click="handleQuantityChange(item.product.id, item.quantity + 1)"
+          @click="handleQuantityChange(item.id, item.quantity + 1)"
           size="sm"
           ariaLabel="Increase quantity"
           class="text-white hover:bg-gray-700"

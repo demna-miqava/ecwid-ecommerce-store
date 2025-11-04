@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Product } from "@/types/product";
-import { useCart } from "@/features/cart/composables/useCart";
+import { useAddProductToCart } from "../composables/useAddProductToCart";
 
 interface Props {
   product: Product;
@@ -8,12 +8,12 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const { handleAddToCart } = useCart();
+const { addProductToCart } = useAddProductToCart();
 
 const handleBuyNow = (event: Event) => {
   event.preventDefault();
   event.stopPropagation();
-  handleAddToCart(props.product);
+  addProductToCart(props.product);
 };
 </script>
 <template>

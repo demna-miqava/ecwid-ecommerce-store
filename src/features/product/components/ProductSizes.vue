@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import type { ProductOption } from "@/types/product";
 
 interface Props {
   option: ProductOption;
+  modelValue?: number;
 }
 
-const props = defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+  modelValue: undefined,
+});
 
-const selectedChoice = ref(props.option.defaultChoice);
+const emit = defineEmits<{
+  "update:modelValue": [value: number];
+}>();
 
 const selectChoice = (index: number) => {
-  selectedChoice.value = index;
+  emit("update:modelValue", index);
 };
 </script>
 
@@ -25,8 +29,8 @@ const selectChoice = (index: number) => {
         @click="selectChoice(index)"
         class="min-w-[50px] px-4 py-3 border rounded-lg font-medium transition-all duration-300 ease-in-out"
         :class="
-          selectedChoice === index
-            ? 'border-black bg-black text-white'
+          (modelValue ?? option.defaultChoice) === index
+            ? 'border-gray-700 bg-black text-white'
             : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
         "
       >
@@ -36,7 +40,9 @@ const selectChoice = (index: number) => {
             v-if="choice.priceModifier !== 0"
             class="text-xs mt-0.5"
             :class="
-              selectedChoice === index ? 'text-gray-200' : 'text-gray-500'
+              (modelValue ?? option.defaultChoice) === index
+                ? 'text-gray-200'
+                : 'text-gray-500'
             "
           >
             {{ choice.priceModifier > 0 ? "+" : "" }}${{

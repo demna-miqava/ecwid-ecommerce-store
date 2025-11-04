@@ -6,16 +6,26 @@ export function useCart() {
   const cartStore = useCartStore();
   const { items, totalItems, totalPrice } = storeToRefs(cartStore);
 
-  const handleAddToCart = (product: Product) => {
-    cartStore.addToCart(product);
+  const handleAddToCart = (
+    product: Product,
+    selectedOptionName?: string,
+    selectedOptionValue?: string,
+    priceModifier?: number
+  ) => {
+    cartStore.addToCart(
+      product,
+      selectedOptionName,
+      selectedOptionValue,
+      priceModifier
+    );
   };
 
-  const handleRemove = (productId: number) => {
-    cartStore.removeFromCart(productId);
+  const handleRemove = (itemId: string) => {
+    cartStore.removeFromCart(itemId);
   };
 
-  const handleQuantityChange = (productId: number, newQuantity: number) => {
-    cartStore.updateQuantity(productId, newQuantity);
+  const handleQuantityChange = (itemId: string, newQuantity: number) => {
+    cartStore.updateQuantity(itemId, newQuantity);
   };
 
   const handleClearCart = () => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import FetchWrapper from "@/components/common/FetchWrapper.vue";
 import ProductGallery from "@/features/product/components/ProductGallery.vue";
@@ -7,14 +7,14 @@ import ProductSizes from "@/features/product/components/ProductSizes.vue";
 import ProductDetailsSkeleton from "@/features/product/components/ProductDetailsSkeleton.vue";
 import { useGetProductById } from "@/features/product/composables/useGetProductById";
 import { useSelectedImage } from "@/features/product/composables/useSelectedImage";
-import { useCart } from "@/features/cart/composables/useCart";
+import { useAddProductToCart } from "@/features/product/composables/useAddProductToCart";
 
 const route = useRoute();
 
 const productId = computed(() => Number(route.params.id));
 
 const { data: product, isLoading, isError } = useGetProductById(productId);
-const { handleAddToCart } = useCart();
+const { addProductToCart } = useAddProductToCart();
 
 const { selectedImage, allImages, selectedImageIndex, selectImage } =
   useSelectedImage(product);
@@ -25,6 +25,13 @@ const sizeOptions = computed(() => {
     (opt) => opt.type === "SIZE" || opt.name.toLowerCase().includes("size")
   );
 });
+
+const selectedSizeIndex = ref<number>(0);
+
+const handleAddToCartClick = () => {
+  if (!product.value) return;
+  addProductToCart(product.value, selectedSizeIndex.value);
+};
 </script>
 
 <template>
@@ -66,16 +73,16 @@ const sizeOptions = computed(() => {
               ></div>
 
               <ProductSizes
-                v-for="option in sizeOptions"
-                :key="option.name"
-                :option="option"
+                v-if="sizeOptions.length > 0 && sizeOptions[0]"
+                v-model="selectedSizeIndex"
+                :option="sizeOptions[0]"
               />
 
               <button
-                @click="() => handleAddToCart(data)"
+                @click="handleAddToCartClick"
                 class="bg-black text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors duration-200"
               >
-                Add to Cart
+                Buy Now
               </button>
             </div>
           </div>

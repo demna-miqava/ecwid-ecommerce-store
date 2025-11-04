@@ -7,6 +7,6 @@ const { items } = useCart();
 
 <template>
   <div class="lg:col-span-2 space-y-4">
-    <CartItem v-for="item in items" :key="item.product.id" :item="item" />
+    <CartItem v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>

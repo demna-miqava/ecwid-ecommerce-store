@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import type { Product } from "@/types/product";
 import type { CartItem } from "@/types/cart";
+import { getCartItemPrice } from "@/utils/cartUtils";
 
 export const useCartStore = defineStore("cart", () => {
   const items = ref<CartItem[]>([]);
@@ -11,41 +12,62 @@ export const useCartStore = defineStore("cart", () => {
   });
 
   const totalPrice = computed(() => {
-    return items.value.reduce(
-      (sum, item) => sum + item.product.price * item.quantity,
-      0
-    );
+    return items.value.reduce((sum, item) => {
+      const itemPrice = getCartItemPrice(item);
+      return sum + itemPrice * item.quantity;
+    }, 0);
   });
 
-  function addToCart(product: Product) {
-    const existingItem = items.value.find(
-      (item) => item.product.id === product.id
-    );
+  function addToCart(
+    product: Product,
+    selectedOptionName?: string,
+    selectedOptionValue?: string,
+    priceModifier?: number
+  ) {
+    // Generate unique ID for this cart item
+    const itemId = selectedOptionValue
+      ? `${product.id}-${selectedOptionValue}`
+      : `${product.id}`;
+
+    // Check if this exact item (product + option) already exists
+    const existingItem = items.value.find((item) => item.id === itemId);
 
     if (existingItem) {
       existingItem.quantity++;
     } else {
-      items.value.push({
-        product,
+      const newItem: CartItem = {
+        id: itemId,
+        productId: product.id,
+        imageUrl: product.imageUrl || product.hdThumbnailUrl,
+        title: product.name,
+        basePrice: product.price,
+        selectedOption:
+          selectedOptionName && selectedOptionValue
+            ? {
+                name: selectedOptionName,
+                value: selectedOptionValue,
+                priceModifier: priceModifier ?? 0,
+              }
+            : undefined,
         quantity: 1,
-      });
+      };
+
+      items.value.push(newItem);
     }
   }
 
-  function removeFromCart(productId: number) {
-    const index = items.value.findIndex(
-      (item) => item.product.id === productId
-    );
+  function removeFromCart(itemId: string) {
+    const index = items.value.findIndex((item) => item.id === itemId);
     if (index > -1) {
       items.value.splice(index, 1);
     }
   }
 
-  function updateQuantity(productId: number, quantity: number) {
-    const item = items.value.find((item) => item.product.id === productId);
+  function updateQuantity(itemId: string, quantity: number) {
+    const item = items.value.find((item) => item.id === itemId);
     if (item) {
       if (quantity <= 0) {
-        removeFromCart(productId);
+        removeFromCart(itemId);
       } else {
         item.quantity = quantity;
       }
