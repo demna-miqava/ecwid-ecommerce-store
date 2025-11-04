@@ -3,6 +3,7 @@ import { mount, VueWrapper } from "@vue/test-utils";
 import CartItem from "./CartItem.vue";
 import type { CartItem as CartItemType } from "@/types/cart";
 import { createPinia, setActivePinia } from "pinia";
+import { mockCartItem } from "@/__mocks__/testData";
 
 // Mock handlers
 const mockHandleQuantityChange = vi.fn();
@@ -24,20 +25,10 @@ vi.mock("@/utils/cartUtils", () => ({
 
 describe("CartItem", () => {
   let wrapper: VueWrapper;
-  let mockCartItem: CartItemType;
 
   beforeEach(() => {
     setActivePinia(createPinia());
     vi.clearAllMocks();
-
-    mockCartItem = {
-      id: "test-1",
-      productId: 1,
-      imageUrl: "https://example.com/image.jpg",
-      title: "Test Product",
-      basePrice: 29.99,
-      quantity: 2,
-    };
   });
 
   describe("Rendering", () => {

@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { mount, VueWrapper } from "@vue/test-utils";
 import ProductItem from "./ProductItem.vue";
-import type { Product } from "@/types/product";
 import { createRouter, createMemoryHistory } from "vue-router";
+import { mockProduct } from "@/__mocks__/testData";
 
 // Mock the composable
 const mockAddProductToCart = vi.fn();
@@ -14,7 +14,6 @@ vi.mock("../composables/useAddProductToCart", () => ({
 
 describe("ProductItem", () => {
   let wrapper: VueWrapper;
-  let mockProduct: Product;
   let router: ReturnType<typeof createRouter>;
 
   beforeEach(async () => {
@@ -31,16 +30,6 @@ describe("ProductItem", () => {
         },
       ],
     });
-
-    mockProduct = {
-      id: 1,
-      name: "Test Product",
-      price: 49.99,
-      originalImageUrl: "https://example.com/product.jpg",
-      hdThumbnailUrl: "https://example.com/thumb.jpg",
-      imageUrl: "https://example.com/image.jpg",
-      description: "Test product description",
-    };
   });
 
   describe("Rendering", () => {

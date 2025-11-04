@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { useAddProductToCart } from "./useAddProductToCart";
 import type { Product } from "@/types/product";
 import { setActivePinia, createPinia } from "pinia";
+import { mockProduct } from "@/__mocks__/testData";
 
 // Mock useCart
 const mockHandleAddToCart = vi.fn();
@@ -12,21 +13,9 @@ vi.mock("@/features/cart/composables/useCart", () => ({
 }));
 
 describe("useAddProductToCart tests", () => {
-  let mockProduct: Product;
-
   beforeEach(() => {
     setActivePinia(createPinia());
     vi.clearAllMocks();
-
-    mockProduct = {
-      id: 1,
-      name: "Test Product",
-      price: 29.99,
-      imageUrl: "https://example.com/image.jpg",
-      hdThumbnailUrl: "https://example.com/thumb.jpg",
-      originalImageUrl: "https://example.com/original.jpg",
-      description: "Test description",
-    };
   });
 
   describe("Add product to cart", () => {

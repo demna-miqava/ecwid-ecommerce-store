@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useCategoryNavigation } from "./useCategoryNavigation";
 import { ref } from "vue";
 import type { Category } from "@/types/category";
+import { mockCategories } from "@/__mocks__/testData";
 
 // Mock vue-router
 const mockRoute = {
@@ -25,13 +26,7 @@ describe("useCategoryNavigation", () => {
   beforeEach(() => {
     mockRoute.params = {};
     mockCategoriesData.value = {
-      items: [
-        { id: 1, name: "Electronics" },
-        { id: 2, name: "Clothing" },
-        { id: 3, name: "Laptops", parentId: 1 },
-        { id: 4, name: "Phones", parentId: 1 },
-        { id: 5, name: "Men", parentId: 2 },
-      ],
+      items: mockCategories,
     };
   });
 

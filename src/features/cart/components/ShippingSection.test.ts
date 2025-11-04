@@ -3,26 +3,15 @@ import { mount, VueWrapper } from "@vue/test-utils";
 import ShippingSection from "./ShippingSection.vue";
 import { createPinia, setActivePinia } from "pinia";
 import { useCartStore } from "@/stores/cartStore";
-import type { Product } from "@/types/product";
+import { mockProduct } from "@/__mocks__/testData";
 
 describe("ShippingSection", () => {
   let wrapper: VueWrapper;
   let store: ReturnType<typeof useCartStore>;
-  let mockProduct: Product;
 
   beforeEach(() => {
     setActivePinia(createPinia());
     store = useCartStore();
-
-    mockProduct = {
-      id: 1,
-      name: "Test Product",
-      price: 29.99,
-      imageUrl: "",
-      hdThumbnailUrl: "",
-      originalImageUrl: "",
-      description: "",
-    };
   });
 
   describe("Rendering", () => {

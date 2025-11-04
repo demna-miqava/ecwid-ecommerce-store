@@ -3,11 +3,11 @@ import { mount, VueWrapper } from "@vue/test-utils";
 import CategoryItem from "./CategoryItem.vue";
 import type { Category } from "@/types/category";
 import { createRouter, createMemoryHistory } from "vue-router";
+import { mockCategory } from "@/__mocks__/testData";
 
 describe("CategoryItem", () => {
   let wrapper: VueWrapper;
   let router: ReturnType<typeof createRouter>;
-  let mockCategory: Category;
 
   beforeEach(async () => {
     router = createRouter({
@@ -27,11 +27,6 @@ describe("CategoryItem", () => {
 
     await router.push("/");
     await router.isReady();
-
-    mockCategory = {
-      id: 1,
-      name: "Electronics",
-    };
   });
 
   describe("Rendering", () => {

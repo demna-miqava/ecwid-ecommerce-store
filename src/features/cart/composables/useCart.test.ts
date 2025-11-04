@@ -1,23 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { useCart } from "./useCart";
 import { setActivePinia, createPinia } from "pinia";
-import type { Product } from "@/types/product";
+import { mockProduct } from "@/__mocks__/testData";
 
 describe("useCart", () => {
-  let mockProduct: Product;
-
   beforeEach(() => {
     setActivePinia(createPinia());
-
-    mockProduct = {
-      id: 1,
-      name: "Test Product",
-      price: 29.99,
-      imageUrl: "https://example.com/image.jpg",
-      hdThumbnailUrl: "https://example.com/thumb.jpg",
-      originalImageUrl: "https://example.com/original.jpg",
-      description: "Test description",
-    };
   });
 
   describe("Initial State", () => {
