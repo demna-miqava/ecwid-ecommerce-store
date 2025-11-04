@@ -9,7 +9,6 @@ export interface ProductOption {
   choices: Array<{
     text: string;
     priceModifier: number;
-    priceModifierType: string;
   }>;
   defaultChoice: number;
 }
@@ -18,11 +17,8 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-  lowestPrice: number;
   description?: string;
-  enabled: boolean;
   categoryIds?: number[];
-  thumbnailUrl: string;
   hdThumbnailUrl: string;
   originalImageUrl: string;
   imageUrl: string;
