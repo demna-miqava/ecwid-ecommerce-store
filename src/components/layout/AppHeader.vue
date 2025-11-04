@@ -15,7 +15,7 @@ const { totalItems } = useCart();
           LightSpeed Assignment
         </router-link>
         <router-link to="/cart" class="relative">
-          <i class="pi pi-shopping-bag text-[24px] text-secondary"></i>
+          <i class="pi pi-shopping-cart text-[1.5rem] text-secondary"></i>
           <span
             v-if="totalItems > 0"
             class="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
