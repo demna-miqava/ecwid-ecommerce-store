@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ProductOption } from "@/types/product";
+import { formatPrice } from "@/utils/priceUtils";
 
 interface Props {
   option: ProductOption;
@@ -46,7 +47,7 @@ const selectChoice = (index: number) => {
             "
           >
             {{ choice.priceModifier > 0 ? "+" : "" }}${{
-              choice.priceModifier.toFixed(2)
+              formatPrice(choice.priceModifier)
             }}
           </span>
         </div>

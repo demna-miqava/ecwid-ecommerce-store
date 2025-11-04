@@ -4,6 +4,7 @@ import { getCartItemPrice } from "@/utils/cartUtils";
 import { useCart } from "../composables/useCart";
 import IconButton from "@/components/common/IconButton.vue";
 import { computed } from "vue";
+import { formatPrice } from "@/utils/priceUtils";
 
 interface Props {
   item: CartItem;
@@ -49,11 +50,10 @@ const productUrl = computed(() => `/products/${props.item.productId}`);
         {{ item.selectedOption.name }}: {{ item.selectedOption.value }}
       </p>
       <p class="font-bold text-base sm:text-lg text-primary">
-        ${{ itemPrice.toFixed(2) }}
+        ${{ formatPrice(itemPrice) }}
       </p>
     </div>
 
-    <!-- Actions: Delete + Quantity -->
     <div
       class="ml-auto flex flex-col sm:flex-row items-end sm:items-center gap-3 sm:gap-4 shrink-0"
     >

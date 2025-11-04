@@ -4,6 +4,7 @@ import ShippingSection from "./ShippingSection.vue";
 import { createPinia, setActivePinia } from "pinia";
 import { useCartStore } from "@/stores/cartStore";
 import { mockProduct } from "@/__mocks__/testData";
+import { formatPrice } from "@/utils/priceUtils";
 
 describe("ShippingSection", () => {
   let wrapper: VueWrapper;
@@ -55,7 +56,7 @@ describe("ShippingSection", () => {
 
       wrapper = mount(ShippingSection);
 
-      expect(wrapper.text()).toContain(`$${mockProduct.price.toFixed(2)}`);
+      expect(wrapper.text()).toContain(`$${formatPrice(mockProduct.price)}`);
     });
 
     it("displays shipping as free ($0.00)", () => {

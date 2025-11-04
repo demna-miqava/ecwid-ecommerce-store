@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCart } from "../composables/useCart";
 import { computed } from "vue";
+import { formatPrice } from "@/utils/priceUtils";
 
 const { totalPrice } = useCart();
 const shipping = 0;
@@ -18,17 +19,17 @@ const emit = defineEmits(["placeOrder"]);
       <div class="space-y-3 mb-6">
         <div class="flex justify-between text-secondary">
           <span>Subtotal</span>
-          <span>${{ totalPrice.toFixed(2) }}</span>
+          <span>${{ formatPrice(totalPrice) }}</span>
         </div>
         <div class="flex justify-between text-secondary">
           <span>Shipping</span>
-          <span>${{ shipping.toFixed(2) }}</span>
+          <span>${{ formatPrice(shipping) }}</span>
         </div>
         <div
           class="border-t pt-3 flex justify-between font-bold text-lg text-primary"
         >
           <span>Total</span>
-          <span>${{ total.toFixed(2) }}</span>
+          <span>${{ formatPrice(total) }}</span>
         </div>
       </div>
 

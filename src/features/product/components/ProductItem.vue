@@ -2,6 +2,7 @@
 import type { Product } from "@/types/product";
 import { useAddProductToCart } from "../composables/useAddProductToCart";
 import BuyNow from "./BuyNow.vue";
+import { formatPrice } from "@/utils/priceUtils";
 
 interface Props {
   product: Product;
@@ -36,7 +37,7 @@ const handleBuyNow = (event: Event) => {
       </h3>
       <div class="flex justify-between items-center mt-auto">
         <p class="font-bold text-lg text-primary">
-          ${{ product.price.toFixed(2) }}
+          ${{ formatPrice(product.price) }}
         </p>
 
         <BuyNow @click="handleBuyNow" />
