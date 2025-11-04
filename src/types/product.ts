@@ -1,7 +1,6 @@
 export interface GalleryImage {
   id: number;
-  hdThumbnailUrl: string;
-  thumbnailUrl: string;
+  originalImageUrl: string;
 }
 
 export interface ProductOption {
@@ -25,7 +24,7 @@ export interface Product {
   categoryIds?: number[];
   thumbnailUrl: string;
   hdThumbnailUrl: string;
-  originalThumbnailUrl: string;
+  originalImageUrl: string;
   imageUrl: string;
   inStock?: boolean;
   created?: string;

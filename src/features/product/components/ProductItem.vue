@@ -16,7 +16,6 @@ const handleBuyNow = (event: Event) => {
   handleAddToCart(props.product);
 };
 </script>
-
 <template>
   <router-link
     :to="{ name: 'product-details', params: { id: product.id } }"
@@ -24,8 +23,8 @@ const handleBuyNow = (event: Event) => {
   >
     <div class="bg-gray-200 overflow-hidden">
       <img
-        v-if="product.hdThumbnailUrl"
-        :src="product.hdThumbnailUrl"
+        v-if="product.originalImageUrl"
+        :src="product.originalImageUrl"
         :alt="product.name"
         class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
       />

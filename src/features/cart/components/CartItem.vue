@@ -20,8 +20,8 @@ const { handleQuantityChange, handleRemove } = useCart();
         class="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-xl overflow-hidden border border-gray-200"
       >
         <img
-          v-if="item.product.hdThumbnailUrl"
-          :src="item.product.hdThumbnailUrl"
+          v-if="item.product.originalImageUrl"
+          :src="item.product.originalImageUrl"
           :alt="item.product.name"
           class="w-full h-full object-cover"
         />
@@ -52,7 +52,9 @@ const { handleQuantityChange, handleRemove } = useCart();
         <i class="pi pi-trash text-[20px]"></i>
       </IconButton>
 
-      <div class="flex items-center bg-gray-800 rounded-full h-8 sm:h-10 px-1 sm:px-2">
+      <div
+        class="flex items-center bg-gray-800 rounded-full h-8 sm:h-10 px-1 sm:px-2"
+      >
         <IconButton
           @click="handleQuantityChange(item.product.id, item.quantity - 1)"
           size="sm"
@@ -61,7 +63,8 @@ const { handleQuantityChange, handleRemove } = useCart();
         >
           <i class="pi pi-minus text-[10px] sm:text-[12px]"></i>
         </IconButton>
-        <span class="w-8 sm:w-12 text-center font-semibold text-white text-base sm:text-lg"
+        <span
+          class="w-8 sm:w-12 text-center font-semibold text-white text-base sm:text-lg"
           >{{ item.quantity }}
         </span>
         <IconButton
