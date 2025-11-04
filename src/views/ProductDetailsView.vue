@@ -8,6 +8,7 @@ import ProductDetailsSkeleton from "@/features/product/components/ProductDetails
 import { useGetProductById } from "@/features/product/composables/useGetProductById";
 import { useSelectedImage } from "@/features/product/composables/useSelectedImage";
 import { useAddProductToCart } from "@/features/product/composables/useAddProductToCart";
+import BuyNow from "@/features/product/components/BuyNow.vue";
 
 const route = useRoute();
 
@@ -49,7 +50,7 @@ const handleAddToCartClick = () => {
       </template>
 
       <template #default="{ data }">
-        <div v-if="data" class="max-w-7xl mx-auto">
+        <div v-if="data">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProductGallery
               :selected-image="selectedImage"
@@ -78,12 +79,7 @@ const handleAddToCartClick = () => {
                 :option="sizeOptions[0]"
               />
 
-              <button
-                @click="handleAddToCartClick"
-                class="bg-primary text-button px-8 py-3 rounded-lg text-lg font-medium hover:opacity-90 transition-all"
-              >
-                Buy Now
-              </button>
+              <BuyNow @click="handleAddToCartClick" />
             </div>
           </div>
         </div>

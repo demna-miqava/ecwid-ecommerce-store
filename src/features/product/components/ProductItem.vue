@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Product } from "@/types/product";
 import { useAddProductToCart } from "../composables/useAddProductToCart";
+import BuyNow from "./BuyNow.vue";
 
 interface Props {
   product: Product;
@@ -37,12 +38,8 @@ const handleBuyNow = (event: Event) => {
         <p class="font-bold text-lg text-primary">
           ${{ product.price.toFixed(2) }}
         </p>
-        <button
-          @click="handleBuyNow"
-          class="bg-primary text-button px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 cursor-pointer"
-        >
-          Buy Now
-        </button>
+
+        <BuyNow @click="handleBuyNow" />
       </div>
     </div>
   </router-link>
