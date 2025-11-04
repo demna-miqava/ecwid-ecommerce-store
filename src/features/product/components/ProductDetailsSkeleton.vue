@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-7xl mx-auto animate-pulse">
+  <div class="mx-auto animate-pulse">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Image skeleton -->
       <div class="aspect-square bg-gray-300 rounded-lg"></div>

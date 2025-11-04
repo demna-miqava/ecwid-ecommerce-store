@@ -33,7 +33,9 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
     </div>
 
     <div class="grow min-w-0">
-      <h3 class="font-semibold text-sm sm:text-base mb-1 sm:mb-2 line-clamp-2 text-primary">
+      <h3
+        class="font-semibold text-sm sm:text-base mb-1 sm:mb-2 line-clamp-2 text-primary"
+      >
         {{ item.title }}
       </h3>
       <p
@@ -57,7 +59,7 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
         ariaLabel="Remove item from cart"
         class="text-destructive hover:opacity-70"
       >
-        <i class="pi pi-trash text-[20px]"></i>
+        <i class="pi pi-trash text-[1.2rem]"></i>
       </IconButton>
 
       <div
@@ -69,7 +71,7 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
           ariaLabel="Decrease quantity"
           class="text-white hover:opacity-70"
         >
-          <i class="pi pi-minus text-[10px] sm:text-[12px]"></i>
+          <i class="pi pi-minus text-[0.8rem]"></i>
         </IconButton>
         <span
           class="w-8 sm:w-12 text-center font-semibold text-white text-base sm:text-lg"
@@ -81,7 +83,7 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
           ariaLabel="Increase quantity"
           class="text-white hover:opacity-70"
         >
-          <i class="pi pi-plus text-[10px] sm:text-[12px]"></i>
+          <i class="pi pi-plus text-[0.8rem]"></i>
         </IconButton>
       </div>
     </div>

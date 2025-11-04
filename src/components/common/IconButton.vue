@@ -18,7 +18,7 @@ const sizeClasses = {
 <template>
   <button
     :class="[
-      'flex items-center justify-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400',
+      'flex items-center justify-center rounded-full cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400',
       sizeClasses[size],
     ]"
     :aria-label="ariaLabel"

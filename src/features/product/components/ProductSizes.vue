@@ -27,7 +27,7 @@ const selectChoice = (index: number) => {
         v-for="(choice, index) in option.choices"
         :key="index"
         @click="selectChoice(index)"
-        class="min-w-[50px] px-4 py-3 border rounded-lg font-medium transition-all duration-300 ease-in-out"
+        class="min-w-12 px-4 py-3 border rounded-lg font-medium transition-all duration-300 ease-in-out"
         :class="
           (modelValue ?? option.defaultChoice) === index
             ? 'border-primary bg-primary text-white'
