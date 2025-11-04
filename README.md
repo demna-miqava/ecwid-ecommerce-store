@@ -21,7 +21,7 @@ E-commerce storefront application built with Vue 3, TypeScript, and Ecwid API.
 
 ## Environment Setup
 
-1. Copy the example environment file:
+1. Copy the example environment file
 
 2. Configure your Ecwid credentials in `.env`:
    ```
