@@ -100,50 +100,52 @@ describe("useCart", () => {
 
   describe("Remove from cart actions", () => {
     it("removes item from cart", () => {
-      const { handleAddToCart, handleRemove, items } = useCart();
+      const { handleAddToCart, handleRemoveItemFromCart, items } = useCart();
 
       handleAddToCart(mockProduct);
       const itemId = items.value[0]!.id;
 
-      handleRemove(itemId);
+      handleRemoveItemFromCart(itemId);
 
       expect(items.value).toHaveLength(0);
     });
 
     it("does not affect other items", () => {
-      const { handleAddToCart, handleRemove, items } = useCart();
+      const { handleAddToCart, handleRemoveItemFromCart, items } = useCart();
 
       handleAddToCart(mockProduct, "Size", "S", 0);
       handleAddToCart(mockProduct, "Size", "M", 5.0);
 
       const firstItemId = items.value[0]!.id;
 
-      handleRemove(firstItemId);
+      handleRemoveItemFromCart(firstItemId);
 
       expect(items.value).toHaveLength(1);
       expect(items.value[0]!.selectedOption?.value).toBe("M");
     });
 
     it("updates totalItems after removal", () => {
-      const { handleAddToCart, handleRemove, items, totalItems } = useCart();
+      const { handleAddToCart, handleRemoveItemFromCart, items, totalItems } =
+        useCart();
 
       handleAddToCart(mockProduct);
       handleAddToCart(mockProduct);
 
       expect(totalItems.value).toBe(2);
 
-      handleRemove(items.value[0]!.id);
+      handleRemoveItemFromCart(items.value[0]!.id);
 
       expect(totalItems.value).toBe(0);
     });
 
     it("updates totalPrice after removal", () => {
-      const { handleAddToCart, handleRemove, items, totalPrice } = useCart();
+      const { handleAddToCart, handleRemoveItemFromCart, items, totalPrice } =
+        useCart();
 
       handleAddToCart(mockProduct);
       const initialPrice = totalPrice.value;
 
-      handleRemove(items.value[0]!.id);
+      handleRemoveItemFromCart(items.value[0]!.id);
 
       expect(totalPrice.value).toBe(0);
       expect(totalPrice.value).not.toBe(initialPrice);
@@ -248,7 +250,7 @@ describe("useCart", () => {
       const {
         handleAddToCart,
         handleQuantityChange,
-        handleRemove,
+        handleRemoveItemFromCart,
         items,
         totalItems,
         totalPrice,
@@ -267,7 +269,7 @@ describe("useCart", () => {
       expect(totalItems.value).toBe(4); // 3 + 1
 
       // Remove one item
-      handleRemove(items.value[1]!.id);
+      handleRemoveItemFromCart(items.value[1]!.id);
 
       expect(items.value).toHaveLength(1);
       expect(totalItems.value).toBe(3);

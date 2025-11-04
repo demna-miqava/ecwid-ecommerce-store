@@ -7,13 +7,13 @@ import { mockCartItem } from "@/__mocks__/testData";
 
 // Mock handlers
 const mockHandleQuantityChange = vi.fn();
-const mockHandleRemove = vi.fn();
+const mockhandleRemoveItemFromCart = vi.fn();
 
 // Mock the useCart composable
 vi.mock("../composables/useCart", () => ({
   useCart: () => ({
     handleQuantityChange: mockHandleQuantityChange,
-    handleRemove: mockHandleRemove,
+    handleRemoveItemFromCart: mockhandleRemoveItemFromCart,
   }),
 }));
 
@@ -98,7 +98,7 @@ describe("CartItem", () => {
   });
 
   describe("User Interactions", () => {
-    it("calls handleRemove when delete button is clicked", async () => {
+    it("calls handleRemoveItemFromCart when delete button is clicked", async () => {
       wrapper = mount(CartItem, {
         props: {
           item: mockCartItem,
@@ -108,7 +108,9 @@ describe("CartItem", () => {
       const deleteButton = wrapper.find('[aria-label="Remove item from cart"]');
       await deleteButton.trigger("click");
 
-      expect(mockHandleRemove).toHaveBeenCalledWith(mockCartItem.id);
+      expect(mockhandleRemoveItemFromCart).toHaveBeenCalledWith(
+        mockCartItem.id
+      );
     });
 
     it("calls handleQuantityChange with incremented quantity when plus button is clicked", async () => {

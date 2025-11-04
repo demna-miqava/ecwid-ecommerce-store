@@ -20,7 +20,7 @@ export function useCart() {
     );
   };
 
-  const handleRemove = (itemId: string) => {
+  const handleRemoveItemFromCart = (itemId: string) => {
     cartStore.removeFromCart(itemId);
   };
 
@@ -37,7 +37,7 @@ export function useCart() {
     totalItems,
     totalPrice,
     handleAddToCart,
-    handleRemove,
+    handleRemoveItemFromCart,
     handleQuantityChange,
     handleClearCart,
   };

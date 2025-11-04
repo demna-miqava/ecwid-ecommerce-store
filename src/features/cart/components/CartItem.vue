@@ -11,7 +11,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const { handleQuantityChange, handleRemove } = useCart();
+const { handleQuantityChange, handleRemoveItemFromCart } = useCart();
 
 const itemPrice = computed(() => getCartItemPrice(props.item));
 
@@ -58,7 +58,7 @@ const productUrl = computed(() => `/products/${props.item.productId}`);
       class="ml-auto flex flex-col sm:flex-row items-end sm:items-center gap-3 sm:gap-4 shrink-0"
     >
       <IconButton
-        @click="handleRemove(item.id)"
+        @click="handleRemoveItemFromCart(item.id)"
         size="sm"
         ariaLabel="Remove item from cart"
         class="text-destructive hover:opacity-70"
