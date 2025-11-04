@@ -77,8 +77,8 @@ const handleCloseModal = () => {
   transition: opacity 0.3s ease;
 }
 
-.modal-enter-active .bg-white,
-.modal-leave-active .bg-white {
+.modal-enter-active .bg-bg-primary,
+.modal-leave-active .bg-bg-primary {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -87,14 +87,14 @@ const handleCloseModal = () => {
   opacity: 0;
 }
 
-.modal-enter-from .bg-white,
-.modal-leave-to .bg-white {
+.modal-enter-from .bg-bg-primary,
+.modal-leave-to .bg-bg-primary {
   transform: scale(0.9);
   opacity: 0;
 }
 
-.modal-enter-to .bg-white,
-.modal-leave-from .bg-white {
+.modal-enter-to .bg-bg-primary,
+.modal-leave-from .bg-bg-primary {
   transform: scale(1);
   opacity: 1;
 }
