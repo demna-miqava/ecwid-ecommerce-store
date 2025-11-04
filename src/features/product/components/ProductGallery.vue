@@ -31,8 +31,8 @@ const emit = defineEmits<{
         class="bg-gray-100 rounded-lg overflow-hidden border-2 transition-colors"
         :class="
           selectedIndex === index
-            ? 'border-black'
-            : 'border-transparent hover:border-gray-300'
+            ? 'border-primary'
+            : 'border-transparent hover:border-black/30'
         "
       >
         <img

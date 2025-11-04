@@ -60,15 +60,15 @@ const handleAddToCartClick = () => {
 
             <!-- Product Details -->
             <div class="space-y-6">
-              <h1 class="text-2xl font-bold text-gray-800">{{ data.name }}</h1>
+              <h1 class="text-2xl font-bold text-primary">{{ data.name }}</h1>
 
-              <div class="text-xl font-bold text-gray-700">
+              <div class="text-xl font-bold text-primary">
                 ${{ data.price.toFixed(2) }}
               </div>
 
               <div
                 v-if="data.description"
-                class="text-gray-600"
+                class="text-secondary"
                 v-html="data.description"
               ></div>
 
@@ -80,7 +80,7 @@ const handleAddToCartClick = () => {
 
               <button
                 @click="handleAddToCartClick"
-                class="bg-black text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+                class="bg-primary text-button px-8 py-3 rounded-lg text-lg font-medium hover:opacity-90 transition-all"
               >
                 Buy Now
               </button>

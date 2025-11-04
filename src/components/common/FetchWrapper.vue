@@ -37,9 +37,10 @@ const isEmpty = computed(() => {
     <slot name="error">
       <div class="text-center py-8">
         <div
-          class="bg-red-50 border border-red-200 rounded-lg p-4 max-w-md mx-auto"
+          class="rounded-lg p-4 max-w-md mx-auto border-2"
+          style="background-color: #fee; border-color: var(--color-destructive)"
         >
-          <p class="text-red-800 font-medium">{{ errorText }}</p>
+          <p class="font-medium text-destructive">{{ errorText }}</p>
         </div>
       </div>
     </slot>
@@ -48,7 +49,7 @@ const isEmpty = computed(() => {
   <div v-else-if="isEmpty">
     <slot name="empty">
       <div class="text-center py-8">
-        <p class="text-gray-600">{{ emptyText }}</p>
+        <p class="text-secondary">{{ emptyText }}</p>
       </div>
     </slot>
   </div>

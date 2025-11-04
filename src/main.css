@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #333;
+  --color-secondary: #555;
+  --color-destructive: #e7000b;
+  --color-bg-primary: #f8f8f8;
+  --color-button: #f2f2f2;
+}
+
 html {
   overflow-y: scroll;
 }

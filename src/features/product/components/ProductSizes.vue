@@ -30,8 +30,8 @@ const selectChoice = (index: number) => {
         class="min-w-[50px] px-4 py-3 border rounded-lg font-medium transition-all duration-300 ease-in-out"
         :class="
           (modelValue ?? option.defaultChoice) === index
-            ? 'border-gray-700 bg-black text-white'
-            : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+            ? 'border-primary bg-primary text-white'
+            : 'border-black/20 hover:border-black/40 hover:bg-bg-primary'
         "
       >
         <div class="flex flex-col items-center">
@@ -41,8 +41,8 @@ const selectChoice = (index: number) => {
             class="text-xs mt-0.5"
             :class="
               (modelValue ?? option.defaultChoice) === index
-                ? 'text-gray-200'
-                : 'text-gray-500'
+                ? 'text-white/80'
+                : 'text-secondary'
             "
           >
             {{ choice.priceModifier > 0 ? "+" : "" }}${{

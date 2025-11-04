@@ -17,7 +17,7 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
 
 <template>
   <div
-    class="bg-gray-50 rounded-2xl p-4 sm:p-6 flex items-center gap-4 sm:gap-6 hover:bg-gray-100 transition-colors"
+    class="bg-bg-primary rounded-2xl p-4 sm:p-6 flex items-center gap-4 sm:gap-6 hover:opacity-90 transition-all border border-black/10"
   >
     <div class="shrink-0">
       <div
@@ -33,18 +33,16 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
     </div>
 
     <div class="grow min-w-0">
-      <h3
-        class="font-semibold text-sm sm:text-base text-gray-900 mb-1 sm:mb-2 line-clamp-2"
-      >
+      <h3 class="font-semibold text-sm sm:text-base mb-1 sm:mb-2 line-clamp-2 text-primary">
         {{ item.title }}
       </h3>
       <p
         v-if="item.selectedOption"
-        class="text-xs sm:text-sm text-gray-600 mb-1"
+        class="text-xs sm:text-sm mb-1 text-secondary"
       >
         {{ item.selectedOption.name }}: {{ item.selectedOption.value }}
       </p>
-      <p class="font-bold text-base sm:text-lg text-gray-900">
+      <p class="font-bold text-base sm:text-lg text-primary">
         ${{ itemPrice.toFixed(2) }}
       </p>
     </div>
@@ -57,19 +55,19 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
         @click="handleRemove(item.id)"
         size="sm"
         ariaLabel="Remove item from cart"
-        class="text-gray-400 hover:text-gray-600 hover:bg-gray-200"
+        class="text-destructive hover:opacity-70"
       >
         <i class="pi pi-trash text-[20px]"></i>
       </IconButton>
 
       <div
-        class="flex items-center bg-gray-800 rounded-full h-8 sm:h-10 px-1 sm:px-2"
+        class="flex items-center bg-primary rounded-full h-8 sm:h-10 px-1 sm:px-2"
       >
         <IconButton
           @click="handleQuantityChange(item.id, item.quantity - 1)"
           size="sm"
           ariaLabel="Decrease quantity"
-          class="text-white hover:bg-gray-700"
+          class="text-white hover:opacity-70"
         >
           <i class="pi pi-minus text-[10px] sm:text-[12px]"></i>
         </IconButton>
@@ -81,7 +79,7 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
           @click="handleQuantityChange(item.id, item.quantity + 1)"
           size="sm"
           ariaLabel="Increase quantity"
-          class="text-white hover:bg-gray-700"
+          class="text-white hover:opacity-70"
         >
           <i class="pi pi-plus text-[10px] sm:text-[12px]"></i>
         </IconButton>

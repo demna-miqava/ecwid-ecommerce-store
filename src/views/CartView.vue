@@ -27,10 +27,10 @@ const handleCloseModal = () => {
       v-if="items.length === 0 && !showCongrats"
       class="text-center py-16 flex flex-col items-center gap-4"
     >
-      <p class="text-xl text-gray-600">Your cart is empty</p>
+      <p class="text-xl text-secondary">Your cart is empty</p>
       <router-link
         to="/"
-        class="px-6 py-3 bg-gray-100 text-black rounded-lg font-medium hover:bg-gray-300 transition-colors"
+        class="px-6 py-3 bg-bg-primary text-primary rounded-lg font-medium hover:opacity-80 transition-all border border-black/10"
       >
         View the store
       </router-link>
@@ -48,22 +48,20 @@ const handleCloseModal = () => {
         @click="handleCloseModal"
       >
         <div
-          class="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl"
+          class="bg-bg-primary rounded-2xl p-8 max-w-md w-full text-center shadow-2xl"
           @click.stop
         >
           <div class="mb-6 animate-bounce">
             <i class="pi pi-sparkles text-4xl text-purple-400"></i>
           </div>
-          <h3 class="text-3xl font-bold text-gray-900 mb-3">
-            Congratulations!
-          </h3>
-          <p class="text-gray-600 text-lg mb-8">
+          <h3 class="text-3xl font-bold text-primary mb-3">Congratulations!</h3>
+          <p class="text-secondary text-lg mb-8">
             Thank you for your purchase! Your order has been placed
             successfully.
           </p>
           <button
             @click="handleCloseModal"
-            class="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+            class="bg-primary text-button px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all"
           >
             Continue Shopping
           </button>
