@@ -9,6 +9,7 @@ import { useGetProductById } from "@/features/product/composables/useGetProductB
 import { useSelectedImage } from "@/features/product/composables/useSelectedImage";
 import { useAddProductToCart } from "@/features/product/composables/useAddProductToCart";
 import BuyNow from "@/features/product/components/BuyNow.vue";
+import { formatPrice } from "@/utils/priceUtils";
 
 const route = useRoute();
 
@@ -59,12 +60,11 @@ const handleAddToCartClick = () => {
               @select-image="selectImage"
             />
 
-            <!-- Product Details -->
             <div class="space-y-6">
               <h1 class="text-2xl font-bold text-primary">{{ data.name }}</h1>
 
               <div class="text-xl font-bold text-primary">
-                ${{ data.price.toFixed(2) }}
+                ${{ formatPrice(data.price) }}
               </div>
 
               <div
