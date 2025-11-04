@@ -18,7 +18,7 @@ const emit = defineEmits<{
       <img
         v-if="selectedImage"
         :src="selectedImage"
-        :alt="'Product image'"
+        alt="Product image"
         class="w-full h-full object-cover"
       />
     </div>
