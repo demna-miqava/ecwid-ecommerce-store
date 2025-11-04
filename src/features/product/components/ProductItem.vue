@@ -34,7 +34,9 @@ const handleBuyNow = (event: Event) => {
         {{ product.name }}
       </h3>
       <div class="flex justify-between items-center mt-auto">
-        <p class="font-bold text-lg text-primary">${{ product.price.toFixed(2) }}</p>
+        <p class="font-bold text-lg text-primary">
+          ${{ product.price.toFixed(2) }}
+        </p>
         <button
           @click="handleBuyNow"
           class="bg-primary text-button px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 cursor-pointer"
