@@ -7,12 +7,15 @@ const { totalItems } = useCart();
 <template>
   <header class="shadow-sm border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="flex justify-between items-center h-16" aria-label="Main navigation">
+      <nav
+        class="flex justify-between items-center h-16"
+        aria-label="Main navigation"
+      >
         <router-link
           to="/"
           class="text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
         >
-          LightSpeed Assignment
+          Ecwid Store
         </router-link>
         <router-link to="/cart" class="relative" aria-label="Shopping cart">
           <i class="pi pi-shopping-cart text-[1.5rem] text-secondary"></i>
