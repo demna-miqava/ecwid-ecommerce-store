@@ -37,8 +37,7 @@ const isEmpty = computed(() => {
     <slot name="error">
       <div class="text-center py-8">
         <div
-          class="rounded-lg p-4 max-w-md mx-auto border-2"
-          style="background-color: #fee; border-color: var(--color-destructive)"
+          class="rounded-lg p-4 max-w-md mx-auto border-2 bg-bg-primary border-destructive"
         >
           <p class="font-medium text-destructive">{{ errorText }}</p>
         </div>
