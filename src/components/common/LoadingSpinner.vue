@@ -5,7 +5,7 @@ interface Props {
   text?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: "md",
   color: "border-blue-700",
 });
