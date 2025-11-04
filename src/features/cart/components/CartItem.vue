@@ -13,6 +13,8 @@ const props = defineProps<Props>();
 const { handleQuantityChange, handleRemove } = useCart();
 
 const itemPrice = computed(() => getCartItemPrice(props.item));
+
+const productUrl = computed(() => `/products/${props.item.productId}`);
 </script>
 
 <template>
@@ -20,16 +22,18 @@ const itemPrice = computed(() => getCartItemPrice(props.item));
     class="bg-bg-primary rounded-2xl p-4 sm:p-6 flex items-center gap-4 sm:gap-6 hover:opacity-90 transition-all border border-black/10"
   >
     <div class="shrink-0">
-      <div
-        class="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-xl overflow-hidden border border-gray-200"
-      >
-        <img
-          v-if="item.imageUrl"
-          :src="item.imageUrl"
-          :alt="item.title"
-          class="w-full h-full object-cover"
-        />
-      </div>
+      <router-link :to="productUrl">
+        <div
+          class="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-xl overflow-hidden border border-gray-200"
+        >
+          <img
+            v-if="item.imageUrl"
+            :src="item.imageUrl"
+            :alt="item.title"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </router-link>
     </div>
 
     <div class="grow min-w-0">
