@@ -63,12 +63,12 @@ export const useCartStore = defineStore("cart", () => {
 
   function updateQuantity(itemId: string, quantity: number) {
     const item = items.value.find((item) => item.id === itemId);
-    if (item) {
-      if (quantity <= 0) {
-        removeFromCart(itemId);
-      } else {
-        item.quantity = quantity;
-      }
+    if (!item) return;
+
+    if (quantity <= 0) {
+      removeFromCart(itemId);
+    } else {
+      item.quantity = quantity;
     }
   }
 
