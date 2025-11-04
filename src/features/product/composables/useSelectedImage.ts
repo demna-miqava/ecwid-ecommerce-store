@@ -10,12 +10,12 @@ export function useSelectedImage(product: Ref<Product | undefined>) {
     const images: string[] = [];
 
     // Add main product image first
-    images.push(product.value.hdThumbnailUrl || product.value.thumbnailUrl);
+    images.push(product.value.originalImageUrl || product.value.thumbnailUrl);
 
     // Add gallery images
     if (product.value.galleryImages) {
       product.value.galleryImages.forEach((img) => {
-        images.push(img.hdThumbnailUrl || img.thumbnailUrl);
+        images.push(img.originalImageUrl || img.thumbnailUrl);
       });
     }
 

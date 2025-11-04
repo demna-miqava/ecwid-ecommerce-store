@@ -25,6 +25,7 @@ export interface Product {
   categoryIds?: number[];
   thumbnailUrl: string;
   hdThumbnailUrl: string;
+  originalThumbnailUrl: string;
   imageUrl: string;
   inStock?: boolean;
   created?: string;
