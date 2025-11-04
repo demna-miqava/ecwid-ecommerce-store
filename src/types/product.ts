@@ -18,12 +18,9 @@ export interface Product {
   name: string;
   price: number;
   description?: string;
-  categoryIds?: number[];
   hdThumbnailUrl: string;
   originalImageUrl: string;
   imageUrl: string;
-  inStock?: boolean;
-  created?: string;
   options?: ProductOption[];
   galleryImages?: GalleryImage[];
 }
