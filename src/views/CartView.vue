@@ -61,7 +61,7 @@ const handleCloseModal = () => {
           </p>
           <button
             @click="handleCloseModal"
-            class="bg-primary text-button px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all"
+            class="bg-primary text-button px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all cursor-pointer"
           >
             Continue Shopping
           </button>
