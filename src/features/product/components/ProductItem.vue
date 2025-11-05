@@ -8,15 +8,9 @@ interface Props {
   product: Product;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 const { addProductToCart } = useAddProductToCart();
-
-const handleBuyNow = (event: Event) => {
-  event.preventDefault();
-  event.stopPropagation();
-  addProductToCart(props.product);
-};
 </script>
 <template>
   <router-link
@@ -40,7 +34,7 @@ const handleBuyNow = (event: Event) => {
           ${{ formatPrice(product.price) }}
         </p>
 
-        <BuyNow @click="handleBuyNow" />
+        <BuyNow @click.stop.prevent="() => addProductToCart(product)" />
       </div>
     </div>
   </router-link>
