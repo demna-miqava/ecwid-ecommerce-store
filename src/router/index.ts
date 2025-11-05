@@ -1,5 +1,6 @@
 import CartView from "@/views/CartView.vue";
 import CategoryView from "@/views/CategoryView.vue";
+import NotFound from "@/views/NotFound.vue";
 import ProductDetailsView from "@/views/ProductDetailsView.vue";
 import ProductsView from "@/views/ProductsView.vue";
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/cart",
     name: "cart",
     component: CartView,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: NotFound,
   },
 ];
 
